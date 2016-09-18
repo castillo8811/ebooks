@@ -65,9 +65,7 @@ class TermData
      */
     public function __construct()
     {
-        $this->user = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->question = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->questionnaire = new \Doctrine\Common\Collections\ArrayCollection();
+
     }
 
 
@@ -233,73 +231,5 @@ class TermData
     public function getUser()
     {
         return $this->user;
-    }
-
-    /**
-     * Add question
-     *
-     * @param \AppBundle\Entity\Question $question
-     *
-     * @return TermData
-     */
-    public function addQuestion(\AppBundle\Entity\Question $question)
-    {
-        $this->question[] = $question;
-
-        return $this;
-    }
-
-    /**
-     * Remove question
-     *
-     * @param \AppBundle\Entity\Question $question
-     */
-    public function removeQuestion(\AppBundle\Entity\Question $question)
-    {
-        $this->question->removeElement($question);
-    }
-
-    /**
-     * Get question
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getQuestion()
-    {
-        return $this->question;
-    }
-
-    /**
-     * Add questionnaire
-     *
-     * @param \AppBundle\Entity\Questionnaire $questionnaire
-     *
-     * @return TermData
-     */
-    public function addQuestionnaire(\AppBundle\Entity\Questionnaire $questionnaire)
-    {
-        $this->questionnaire[] = $questionnaire;
-
-        return $this;
-    }
-
-    /**
-     * Remove questionnaire
-     *
-     * @param \AppBundle\Entity\Questionnaire $questionnaire
-     */
-    public function removeQuestionnaire(\AppBundle\Entity\Questionnaire $questionnaire)
-    {
-        $this->questionnaire->removeElement($questionnaire);
-    }
-
-    /**
-     * Get questionnaire
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getQuestionnaire()
-    {
-        return $this->questionnaire;
     }
 }
