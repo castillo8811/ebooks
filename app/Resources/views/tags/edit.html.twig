@@ -1,0 +1,89 @@
+{# app/Resources/views/tags/edit.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'form/form_errors.html.twig' %}
+
+{% block title %}Tickets{% endblock %}
+
+{%block stylesheets%}
+    {{ parent() }}
+
+    <!-- Our CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vocabulary.css') }}"/>
+
+{% endblock %}
+
+{% block content %}
+    <!--Barra Superior de titulo-->
+        <div class="panel box-shadow-none content-header">
+            <div class="panel-body">
+                <div class="col-xs-12">
+                    <div class="col-xs-7">
+                        <h3 class="animated fadeInLeft">Tickets</h3>
+                        <p class="animated fadeInDown">
+                            Home <span class="fa-angle-right fa"></span> Credits
+                        </p>
+                    </div>
+            </div>
+        </div>
+    </div>
+    <!--Hoja Blanca-->
+    <div class="col-md-12 panel">
+        {% if message is defined %}
+            <h2>{{ message }}</h2>
+        {% else %}
+            <div class="col-md-12 panel-heading">
+                <h4>Editar Catalogo</h4>
+            </div>
+            <div class="col-md-12 panel-body">
+                <div class="col-md-12">
+            <form class="cmxform" id="signupForm" method="post">
+                <div class="col-md-12" id="form">
+                    <div class="form-group form-animate-text separacion-campos">
+                        {{ form_widget(form.name, { 'attr': {'class': 'form-text'} }) }}
+                        <span class="bar"></span>
+                        {{ form_label(form.name, "Name") }}
+                        {{ form_errors(form.name, {'attr': {'class': 'error'}}) }}
+                    </div>
+                    <div class="form-group form-animate-text separacion-campos">
+                        {{ form_widget(form.description, { 'attr': {'class': 'form-text'}}) }}
+                        <span class="bar"></span>
+                        {{ form_label(form.description, "Description") }}
+                        {{ form_errors(form.description, {'attr': {'class': 'error'}}) }}
+                    </div>
+                    <div class="form-group form-animate-text separacion-campos">
+                        {{ form_widget(form.status, { 'attr': {'class': 'form-text'}}) }}
+                        <span class="bar"></span>
+                        {{ form_label(form.status, "Estado") }}
+                        {{ form_errors(form.status, {'attr': {'class': 'error'}}) }}
+                    </div>
+
+                    <div class="col-xs-12">
+                        {{ form_row(form.save, { 'attr': {'class': 'col-xs-3 col-xs-offset-2 submit btn btn-3d btn-default botones texto-titulo animar-boton' }}) }}
+
+                        <a href="{{ path("show_tags", {'id' : id }) }}" class="col-xs-3 col-xs-offset-2 submit btn btn-3d btn-danger botones animar-boton">Cancelar</a>
+                    </div>
+
+                    {{ form_row(form._token) }}
+                </div>
+            </form>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+
+    <!-- end: hoja blanca -->
+
+    {% endblock %}
+
+    {% block javascripts %}
+
+    {{ parent() }}
+    <script src="{{ asset('js/plugins/jquery.validate.min.js') }}"></script>
+
+    <!-- Our Javascript -->
+    <!--script src="{{ asset('js/vocabulary/validation.js') }}"></script>
+
+{% endblock %}

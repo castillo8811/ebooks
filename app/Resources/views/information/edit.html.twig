@@ -1,0 +1,119 @@
+{# app/Resources/views/information/create.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'form/form_errors.html.twig' %}
+
+{% block title %}Informacion Adicional{% endblock %}
+
+{%block stylesheets%}
+    {{ parent() }}
+
+    <!-- Our CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/user.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/plugins/bootstrap-material-datetimepicker.css') }}"/>
+
+
+{% endblock %}
+
+{% block content %}
+
+    <!--Barra Superior de titulo-->
+    <div class="panel box-shadow-none content-header">
+        <div class="panel-body">
+            <div class="col-md-12">
+                <h3 class="animated fadeInLeft">Editar Informacion Adicional</h3>
+                <p class="animated fadeInDown">
+                    Home <span class="fa-angle-right fa"></span> Credits
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--Hoja Blanca-->
+    <div class="col-md-12 panel">
+        {% if message is defined %}
+            <h2>{{ message }}</h2>
+        {% else %}
+            <div class="col-md-12 panel-heading">
+                <h4>Editando Informacion Adicional</h4>
+            </div>
+            <div class="col-md-12 panel-body">
+                <div class="col-md-12">
+                    <form class="cmxform" id="signupForm" method="post">
+                        <div class="col-md-12" id="form">
+                            <div class="form-group form-animate-text separacion-campos">
+                                {{ form_widget(form.first_name, { 'attr': {'class': 'form-text'} }) }}
+                                <span class="bar"></span>
+                                {{ form_label(form.first_name, "Nombre(s)") }}
+                                {{ form_errors(form.first_name) }}
+                            </div>
+                            <div class="form-group form-animate-text separacion-campos">
+                                {{ form_widget(form.last_name, { 'attr': {'class': 'form-text'} }) }}
+                                <span class="bar"></span>
+                                {{ form_label(form.last_name, "Apeliido(s)") }}
+                                {{ form_errors(form.last_name) }}
+                            </div>
+                            <div class="form-group form-animate-text separacion-campos">
+                                {{ form_widget(form.mobile_phone, { 'attr': {'class': 'form-text'} }) }}
+                                <span class="bar"></span>
+                                {{ form_label(form.mobile_phone, "Celular") }}
+                                {{ form_errors(form.mobile_phone) }}
+                            </div>
+                            <div class="form-group form-animate-text separacion-campos">
+                                {{ form_widget(form.phone, { 'attr': {'class': 'form-text'} }) }}
+                                <span class="bar"></span>
+                                {{ form_label(form.phone, "Telefono") }}
+                                {{ form_errors(form.phone) }}
+                            </div>
+                            <div class="form-group form-animate-text separacion-campos">
+                                {{ form_widget(form.level_study, { 'attr': {'class': 'form-text'} }) }}
+                                <span class="bar"></span>
+                                {{ form_label(form.level_study, "Nivel de Estudio") }}
+                                {{ form_errors(form.level_study) }}
+                            </div>
+                            <div class="form-group form-animate-text separacion-campos">
+                                {{ form_widget(form.living_in, { 'attr': {'class': 'form-text'} }) }}
+                                <span class="bar"></span>
+                                {{ form_label(form.living_in, "Viviendo es") }}
+                                {{ form_errors(form.living_in) }}
+                            </div>
+                            <div class="form-group form-animate-text separacion-campos">
+                                {{ form_widget(form.birthdate, { 'attr': {'class': 'form-text dateAnimate',  'data-dtp': 'information_birthdate'} }) }}
+                                <span class="bar"></span>
+                                {{ form_label(form.birthdate, "Fecha de Nacimiento") }}
+                                {{ form_errors(form.birthdate) }}
+                            </div>
+                            <div class="form-group form-animate-text separacion-campos">
+                                {{ form_widget(form.civil_status, { 'attr': {'class': 'form-text'} }) }}
+                                <span class="bar"></span>
+                                {{ form_label(form.civil_status, "Estado Civil") }}
+                                {{ form_errors(form.civil_status) }}
+                            </div>
+
+                            {{ form_row(form.save, { 'attr': {'class': 'col-xs-3 col-xs-offset-4 submit btn btn-3d btn-default fa fa-arrow-right texto-boton botones animar-boton'} }) }}
+
+                            {{ form_row(form._token) }}
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- end: hoja blanca -->
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+    <script src="{{ asset('js/plugins/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('js/plugins/bootstrap-material-datetimepicker.js') }}"></script>
+
+    <!-- Our Javascript -->
+    <script src="{{ asset('js/information/validation.js') }}"></script>
+    <script src="{{ asset('js/information/calendar.js') }}"></script>
+
+{% endblock %}

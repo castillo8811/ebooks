@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>TermData</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Name</th>
+                <td>{{ termDatum.name }}</td>
+            </tr>
+            <tr>
+                <th>Machinename</th>
+                <td>{{ termDatum.machineName }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ termDatum.status }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ termDatum.description }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ termDatum.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('termdata_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('termdata_edit', { 'id': termDatum.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

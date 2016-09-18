@@ -1,0 +1,373 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Test
+ *
+ * @ORM\Table(name="test", indexes={@ORM\Index(name="fk_test_questionnaire1_idx", columns={"questionnaire_id"})})
+ * @ORM\Entity
+ */
+class Test
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=100, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", length=65535, nullable=false)
+     */
+    private $description;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="status", type="integer", nullable=false)
+     */
+    private $status;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_expiry_from", type="datetime", nullable=true)
+     */
+    private $dateExpiryFrom;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_expiry_to", type="datetime", nullable=true)
+     */
+    private $dateExpiryTo;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_started", type="datetime", nullable=true)
+     */
+    private $dateStarted;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_finished", type="datetime", nullable=true)
+     */
+    private $dateFinished;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="result", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $result;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \AppBundle\Entity\Questionnaire
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Questionnaire")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="questionnaire_id", referencedColumnName="id")
+     * })
+     */
+    private $questionnaire;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User", inversedBy="test")
+     * @ORM\JoinTable(name="test_user",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="test_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $user;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->user = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Test
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Test
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     *
+     * @return Test
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set dateExpiryFrom
+     *
+     * @param \DateTime $dateExpiryFrom
+     *
+     * @return Test
+     */
+    public function setDateExpiryFrom($dateExpiryFrom)
+    {
+        $this->dateExpiryFrom = $dateExpiryFrom;
+
+        return $this;
+    }
+
+    /**
+     * Get dateExpiryFrom
+     *
+     * @return \DateTime
+     */
+    public function getDateExpiryFrom()
+    {
+        return $this->dateExpiryFrom;
+    }
+
+    /**
+     * Set dateExpiryTo
+     *
+     * @param \DateTime $dateExpiryTo
+     *
+     * @return Test
+     */
+    public function setDateExpiryTo($dateExpiryTo)
+    {
+        $this->dateExpiryTo = $dateExpiryTo;
+
+        return $this;
+    }
+
+    /**
+     * Get dateExpiryTo
+     *
+     * @return \DateTime
+     */
+    public function getDateExpiryTo()
+    {
+        return $this->dateExpiryTo;
+    }
+
+    /**
+     * Set dateStarted
+     *
+     * @param \DateTime $dateStarted
+     *
+     * @return Test
+     */
+    public function setDateStarted($dateStarted)
+    {
+        $this->dateStarted = $dateStarted;
+
+        return $this;
+    }
+
+    /**
+     * Get dateStarted
+     *
+     * @return \DateTime
+     */
+    public function getDateStarted()
+    {
+        return $this->dateStarted;
+    }
+
+    /**
+     * Set dateFinished
+     *
+     * @param \DateTime $dateFinished
+     *
+     * @return Test
+     */
+    public function setDateFinished($dateFinished)
+    {
+        $this->dateFinished = $dateFinished;
+
+        return $this;
+    }
+
+    /**
+     * Get dateFinished
+     *
+     * @return \DateTime
+     */
+    public function getDateFinished()
+    {
+        return $this->dateFinished;
+    }
+
+    /**
+     * Set result
+     *
+     * @param float $result
+     *
+     * @return Test
+     */
+    public function setResult($result)
+    {
+        $this->result = $result;
+
+        return $this;
+    }
+
+    /**
+     * Get result
+     *
+     * @return float
+     */
+    public function getResult()
+    {
+        return $this->result;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set questionnaire
+     *
+     * @param \AppBundle\Entity\Questionnaire $questionnaire
+     *
+     * @return Test
+     */
+    public function setQuestionnaire(\AppBundle\Entity\Questionnaire $questionnaire = null)
+    {
+        $this->questionnaire = $questionnaire;
+
+        return $this;
+    }
+
+    /**
+     * Get questionnaire
+     *
+     * @return \AppBundle\Entity\Questionnaire
+     */
+    public function getQuestionnaire()
+    {
+        return $this->questionnaire;
+    }
+
+    /**
+     * Add user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return Test
+     */
+    public function addUser(\AppBundle\Entity\User $user)
+    {
+        $this->user[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Remove user
+     *
+     * @param \AppBundle\Entity\User $user
+     */
+    public function removeUser(\AppBundle\Entity\User $user)
+    {
+        $this->user->removeElement($user);
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+}

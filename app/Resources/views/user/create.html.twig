@@ -1,0 +1,75 @@
+{# app/Resources/views/user/create.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% form_theme form 'form/form_errors.html.twig' %}
+
+{% block title %}Usuario{% endblock %}
+
+{%block stylesheets%}
+    {{ parent() }}
+
+    <!-- Our CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/user.css') }}"/>
+
+{% endblock %}
+
+{% block content %}
+
+    <!--Barra Superior de titulo-->
+    <div class="panel box-shadow-none content-header">
+        <div class="panel-body">
+            <div class="col-md-12">
+                <h3 class="animated fadeInLeft">Usuario</h3>
+                <p class="animated fadeInDown">
+                    Home <span class="fa-angle-right fa"></span> Credits
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--Hoja Blanca-->
+    <div class="col-md-12 panel">
+        <div class="col-md-12 panel-heading">
+            <h4>Registro de Usuario</h4>
+        </div>
+        <div class="col-md-12 panel-body">
+            <div class="col-md-12">
+                <form class="cmxform" id="signupForm" method="post">
+                    <div class="col-md-12" id="form">
+                        <div class="form-group form-animate-text separacion-campos">
+                            {{ form_widget(form.email, { 'attr': {'class': 'form-text'} }) }}
+                            <span class="bar"></span>
+                            {{ form_label(form.email, "Email") }}
+                            {{ form_errors(form.email) }}
+                        </div>
+                        <div class="form-group form-animate-text separacion-campos">
+                            {{ form_widget(form.status, { 'attr': {'class': 'form-text'} }) }}
+                            <span class="bar"></span>
+                            {{ form_label(form.status, "Estado") }}
+                            {{ form_errors(form.status) }}
+                        </div>
+
+                        {{ form_row(form.save, { 'attr': {'class': 'col-xs-3 col-xs-offset-4 submit btn btn-3d btn-default fa fa-arrow-right texto-boton botones animar-boton'} }) }}
+
+                        {{ form_row(form._token) }}
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- end: hoja blanca -->
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+    <script src="{{ asset('js/plugins/jquery.validate.min.js') }}"></script>
+
+    <!-- Our Javascript -->
+    <script src="{{ asset('js/user/validation.js') }}"></script>
+
+{% endblock %}

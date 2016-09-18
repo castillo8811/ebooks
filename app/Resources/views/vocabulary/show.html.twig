@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Vocabulary</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Name</th>
+                <td>{{ vocabulary.name }}</td>
+            </tr>
+            <tr>
+                <th>Machinename</th>
+                <td>{{ vocabulary.machineName }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ vocabulary.status }}</td>
+            </tr>
+            <tr>
+                <th>Visibility</th>
+                <td>{{ vocabulary.visibility }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ vocabulary.description }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ vocabulary.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('vocabulary_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('vocabulary_edit', { 'id': vocabulary.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

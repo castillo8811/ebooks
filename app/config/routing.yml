@@ -1,0 +1,9 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+logout:
+    path: /logout
+
+homepage:
+    path:   /
+    defaults:  { _controller: AppBundle:Book:index}

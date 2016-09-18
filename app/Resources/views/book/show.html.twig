@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col s12 m3">
+            <div class="book-item">
+                <div class="icon-block book-info">
+                    <a href="{{ path('book_show', { 'isbn': book.isbn }) }}">
+                        <img class="z-depth-2 center-block" src="{{ asset('images/covers/' ~book.isbn~ '-front.jpg') }}"/>
+                        {% if book.downloads %}
+                        <div class="grey book-download center-align center-block">
+                            <span class="white-text">Descargas: {{ book.downloads }}</span>
+                        </div>
+                        {%  endif %}
+                    </a>
+                </div>
+                <div class="row book-download center-align center-block">
+                    <span class="block">Descargar Libro <i class="small material-icons">play_for_work</i></span>
+                    <div class="download-links col m12 s12 center-align center-block">
+                        <div class="col m5 s12 red download-item">
+                            <a class="" target="_blank" href="{{ path('book_download',{isbn:book.isbn, format:'epub'}) }}">Formato EPUP</a>
+                        </div>
+                        <div class="col m5 s12 red download-item">
+                            <a class="" target="_blank" href="{{ path('book_download',{isbn:book.isbn, format:'mobi'}) }}">Formato MOBI</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m9">
+            <h4>{{book.title}}</h4>
+            <div class="detail-item">
+                <span class="text-bold">Autor: </span>{{book.autor}}
+            </div>
+            <div class="detail-item">
+                <span class="text-bold">ISBN: </span>{{book.isbn}}
+            </div>
+            <div class="detail-item">
+                <span class="text-bold">Categoria: </span>Varios
+            </div>
+            <br>
+            <div class="sinopsis">
+                {{book.sinopsis|nl2br}}
+            </div>
+        </div>
+        <div class="col s12 m3 hide-on-med-and-up	">
+            <div class="book-item">
+                    <span class="block center-block center-align">Descargar Libro <i class="small material-icons">play_for_work</i></span>
+                    <div class="download-links col m12 s12 center-align center-block">
+                        <div class="col m5 s12 red download-item">
+                            <a class="" target="_blank" href="{{ path('book_download',{isbn:book.isbn, format:'epub'}) }}">Formato EPUP</a>
+                        </div>
+                        <div class="col m5 s12 red download-item">
+                            <a class="" target="_blank" href="{{ path('book_download',{isbn:book.isbn, format:'mobi'}) }}">Formato MOBI</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

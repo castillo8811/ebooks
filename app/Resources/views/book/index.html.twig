@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="row">
+    {% for book in books %}
+                <div class="col s12 m3 book-item">
+                    <div class="icon-block book-info">
+                        <a class="block " href="{{ path('book_show', { 'isbn': book.isbn }) }}">
+                            <img class="z-depth-1 hoverable center-block" src="{{ asset('images/covers/' ~book.isbn~ '-front.jpg') }}"/>
+                            <h5 class="center black-text">{{book.title}}</h5>
+                        </a>
+                    </div>
+                </div>
+        {% endfor %}
+    </div>
+{% endblock %}

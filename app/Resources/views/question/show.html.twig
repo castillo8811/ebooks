@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Preguntas{% endblock %}
+
+{%block stylesheets%}
+    {{ parent() }}
+
+    <!-- Our CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vocabulary.css') }}"/>
+{% endblock %}
+
+{% block content %}
+
+    <!--Barra Superior de titulo-->
+    <div class="panel box-shadow-none content-header">
+        <div class="panel-body">
+            <div class="col-md-12">
+                <div class="col-xs-7">
+                    <h3 class="animated fadeInLeft">Preguntas</h3>
+                    <p class="animated fadeInDown">
+                        Home <span class="fa-angle-right fa"></span> Credits
+                    </p>
+                </div>
+             </div>
+        </div>
+    </div>
+    <!--Hoja Blanca-->
+    <div class="col-md-12 panel">
+        <div class="col-md-12 panel-heading">
+            <h4>Detalles de la Pregunta</h4>
+        </div>
+        <div class="col-md-12 panel-body">
+           <div class="col-xs-9">
+                {% if message is defined %}
+                    <h2>{{ message }}</h2>
+                {% else %}
+
+                <h1  class="col-xs-12 texto-titulo">{{ result.type}}</h1>
+                <div class="col-xs-3">
+                    <p class="texto-campo">Pregunta:</p>
+                </div>
+                <div class="col-xs-9">
+                        <p class="texto-resultado">{{ result.question }}</p>
+                    </div>
+                    <div class="col-xs-3">
+                        <p class="texto-campo">Estado</p>
+                    </div>
+                    <div class="col-xs-9">
+                        <p class="texto-resultado">{{ result.status }}</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+{% endblock %}

@@ -1,0 +1,199 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Evaluation
+ *
+ * @ORM\Table(name="evaluation", indexes={@ORM\Index(name="fk_evaluation_answer1_idx", columns={"answer_id"}), @ORM\Index(name="fk_evaluation_test1_idx", columns={"test_id"}), @ORM\Index(name="fk_evaluation_question1_idx", columns={"question_id"})})
+ * @ORM\Entity
+ */
+class Evaluation
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="qualification", type="integer", nullable=true)
+     */
+    private $qualification;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="answer_open", type="text", length=65535, nullable=true)
+     */
+    private $answerOpen;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \AppBundle\Entity\Test
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Test")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="test_id", referencedColumnName="id")
+     * })
+     */
+    private $test;
+
+    /**
+     * @var \AppBundle\Entity\Question
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Question")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="question_id", referencedColumnName="id")
+     * })
+     */
+    private $question;
+
+    /**
+     * @var \AppBundle\Entity\Answer
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Answer")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="answer_id", referencedColumnName="id")
+     * })
+     */
+    private $answer;
+
+
+
+    /**
+     * Set qualification
+     *
+     * @param integer $qualification
+     *
+     * @return Evaluation
+     */
+    public function setQualification($qualification)
+    {
+        $this->qualification = $qualification;
+
+        return $this;
+    }
+
+    /**
+     * Get qualification
+     *
+     * @return integer
+     */
+    public function getQualification()
+    {
+        return $this->qualification;
+    }
+
+    /**
+     * Set answerOpen
+     *
+     * @param string $answerOpen
+     *
+     * @return Evaluation
+     */
+    public function setAnswerOpen($answerOpen)
+    {
+        $this->answerOpen = $answerOpen;
+
+        return $this;
+    }
+
+    /**
+     * Get answerOpen
+     *
+     * @return string
+     */
+    public function getAnswerOpen()
+    {
+        return $this->answerOpen;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set test
+     *
+     * @param \AppBundle\Entity\Test $test
+     *
+     * @return Evaluation
+     */
+    public function setTest(\AppBundle\Entity\Test $test = null)
+    {
+        $this->test = $test;
+
+        return $this;
+    }
+
+    /**
+     * Get test
+     *
+     * @return \AppBundle\Entity\Test
+     */
+    public function getTest()
+    {
+        return $this->test;
+    }
+
+    /**
+     * Set question
+     *
+     * @param \AppBundle\Entity\Question $question
+     *
+     * @return Evaluation
+     */
+    public function setQuestion(\AppBundle\Entity\Question $question = null)
+    {
+        $this->question = $question;
+
+        return $this;
+    }
+
+    /**
+     * Get question
+     *
+     * @return \AppBundle\Entity\Question
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
+
+    /**
+     * Set answer
+     *
+     * @param \AppBundle\Entity\Answer $answer
+     *
+     * @return Evaluation
+     */
+    public function setAnswer(\AppBundle\Entity\Answer $answer = null)
+    {
+        $this->answer = $answer;
+
+        return $this;
+    }
+
+    /**
+     * Get answer
+     *
+     * @return \AppBundle\Entity\Answer
+     */
+    public function getAnswer()
+    {
+        return $this->answer;
+    }
+}

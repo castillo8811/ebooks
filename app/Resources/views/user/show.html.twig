@@ -1,0 +1,136 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Usuarios{% endblock %}
+
+{%block stylesheets%}
+    {{ parent() }}
+
+    <!-- Our CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/user.css') }}"/>
+{% endblock %}
+
+{% block content %}
+
+    <!--Barra Superior de titulo-->
+    <div class="panel box-shadow-none content-header">
+        <div class="panel-body">
+            <div class="col-xs-12">
+                <div class="col-xs-7">
+                    <h3 class="animated fadeInLeft">Usuario</h3>
+                    <p class="animated fadeInDown">
+                        Home <span class="fa-angle-right fa"></span> Credits
+                    </p>
+                </div>
+                <div class="col-xs-3 col-xs-offset-2">
+                    <a href="{{ path("create_user") }}" class="col-xs-12 submit btn btn-3d btn-default texto-boton botones crear-boton animar-boton">Crear</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Hoja Blanca-->
+    <div class="col-md-12 panel">
+        <div class="col-md-12 panel-heading">
+            <h4>Detalles del Catalogo</h4>
+        </div>
+        <div class="col-md-12 panel-body">
+            <div class="col-xs-9">
+                {% if message is defined %}
+                    <h2>{{ message }}</h2>
+                {% else %}
+                    {% if photo is defined %}
+                        <div class="col-xs-4 col-xs-offset-4">
+                            <img class="img-thumbnail img-responsive" src="{{ photo.path }}" />
+                        </div>
+                    {% endif %}
+                    <h1 class="col-xs-12 texto-titulo">{{ user.roles|join('|') }}</h1>
+                    <div class="col-xs-3">
+                        <p class="texto-campo">EMAIL:</p>
+                    </div>
+                    <div class="col-xs-9">
+                        <p class="texto-resultado">{{ user.email }}</p>
+                    </div>
+                    <div class="col-xs-3">
+                        <p class="texto-campo">STATUS:</p>
+                    </div>
+                    <div class="col-xs-9">
+                        <p class="texto-resultado">{{ user.getTextStatus(user.status) }}</p>
+                    </div>
+                    {% if information is defined %}
+                        <h2 class="col-xs-12 texto-titulo">Informacion</h2>
+                        <div class="col-xs-4">
+                            <p class="texto-campo">NOMBRE(S):</p>
+                        </div>
+                        <div class="col-xs-8">
+                            <p class="texto-resultado">{{ information.firstName }}</p>
+                        </div>
+                        <div class="col-xs-4">
+                            <p class="texto-campo">APELLIDO(S):</p>
+                        </div>
+                        <div class="col-xs-8">
+                            <p class="texto-resultado">{{ information.lastName }}</p>
+                        </div>
+                        <div class="col-xs-4">
+                            <p class="texto-campo">CELULAR:</p>
+                        </div>
+                        <div class="col-xs-8">
+                            <p class="texto-resultado">{{ information.mobilePhone }}</p>
+                        </div>
+                        {% if information.mobilePhone %}
+                            <div class="col-xs-4">
+                                <p class="texto-campo">TELEFONO:</p>
+                            </div>
+                            <div class="col-xs-8">
+                                <p class="texto-resultado">{{ information.phone }}</p>
+                            </div>
+                        {% endif %}
+                        {% if information.levelStudy %}
+                            <div class="col-xs-4">
+                                <p class="texto-campo">NIVEL DE ESTUDIO:</p>
+                            </div>
+                            <div class="col-xs-8">
+                                <p class="texto-resultado">{{ information.levelStudy }}</p>
+                            </div>
+                        {% endif %}
+                        {% if information.livingIn %}
+                            <div class="col-xs-4">
+                                <p class="texto-campo">VIVIENDO EN:</p>
+                            </div>
+                            <div class="col-xs-8">
+                                <p class="texto-resultado">{{ information.livingIn }}</p>
+                            </div>
+                        {% endif %}
+                        {% if information.birthdate %}
+                            <div class="col-xs-4">
+                                <p class="texto-campo">CUMPLEAÑOS:</p>
+                            </div>
+                            <div class="col-xs-8">
+                                <p class="texto-resultado">{{ information.birthdate|date("m/d/Y") }}</p>
+                            </div>
+                        {% endif %}
+                        {% if information.civilStatus %}
+                            <div class="col-xs-4">
+                                <p class="texto-campo">ESTADO CIVIL:</p>
+                            </div>
+                            <div class="col-xs-8">
+                                <p class="texto-resultado">{{ information.civilStatus }}</p>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+            </div>
+            <div class="col-xs-3">
+                <h2 class="col-xs-12 acciones espacio-acciones">Acciones</h2>
+                <a href="{{ path("edit_user", {'id' : user.id }) }}" class="col-xs-12 submit btn btn-3d btn-default texto-boton botones animar-boton">Editar</a>
+                <a href="{{ path("delete_user", {'id' : user.id }) }}" class="col-xs-12 btn ripple btn-3d btn-danger botones animar-boton">Borrar <span class="fa fa-trash"></span></a>
+            </div>
+        </div>
+    </div>
+    <!-- end: hoja blanca -->
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+{% endblock %}

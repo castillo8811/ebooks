@@ -1,0 +1,162 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Answer
+ *
+ * @ORM\Table(name="answer", indexes={@ORM\Index(name="fk_answer_question1_idx", columns={"question_id"})})
+ * @ORM\Entity
+ */
+class Answer
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="answer", type="text", length=65535, nullable=false)
+     */
+    private $answer;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="right", type="integer", nullable=false)
+     */
+    private $right;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="status", type="integer", nullable=false)
+     */
+    private $status;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \AppBundle\Entity\Question
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Question")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="question_id", referencedColumnName="id")
+     * })
+     */
+    private $question;
+
+
+
+    /**
+     * Set answer
+     *
+     * @param string $answer
+     *
+     * @return Answer
+     */
+    public function setAnswer($answer)
+    {
+        $this->answer = $answer;
+
+        return $this;
+    }
+
+    /**
+     * Get answer
+     *
+     * @return string
+     */
+    public function getAnswer()
+    {
+        return $this->answer;
+    }
+
+    /**
+     * Set right
+     *
+     * @param integer $right
+     *
+     * @return Answer
+     */
+    public function setRight($right)
+    {
+        $this->right = $right;
+
+        return $this;
+    }
+
+    /**
+     * Get right
+     *
+     * @return integer
+     */
+    public function getRight()
+    {
+        return $this->right;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     *
+     * @return Answer
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set question
+     *
+     * @param \AppBundle\Entity\Question $question
+     *
+     * @return Answer
+     */
+    public function setQuestion(\AppBundle\Entity\Question $question = null)
+    {
+        $this->question = $question;
+
+        return $this;
+    }
+
+    /**
+     * Get question
+     *
+     * @return \AppBundle\Entity\Question
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
+}

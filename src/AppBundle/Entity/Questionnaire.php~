@@ -1,0 +1,260 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Questionnaire
+ *
+ * @ORM\Table(name="questionnaire", indexes={@ORM\Index(name="fk_questionnaire_user1_idx", columns={"user_id"})})
+ * @ORM\Entity
+ */
+class Questionnaire
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=100, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="text", length=65535, nullable=false)
+     */
+    private $description;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="status", type="integer", nullable=false)
+     */
+    private $status;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \AppBundle\Entity\User
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\TermData", inversedBy="questionnaire")
+     * @ORM\JoinTable(name="questionnaire_term_data",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="questionnaire_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="term_data_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $termData;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Question", mappedBy="questionnaire")
+     */
+    private $question;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->termData = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->question = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Questionnaire
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Questionnaire
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     *
+     * @return Questionnaire
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return Questionnaire
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Add termDatum
+     *
+     * @param \AppBundle\Entity\TermData $termDatum
+     *
+     * @return Questionnaire
+     */
+    public function addTermDatum(\AppBundle\Entity\TermData $termDatum)
+    {
+        $this->termData[] = $termDatum;
+
+        return $this;
+    }
+
+    /**
+     * Remove termDatum
+     *
+     * @param \AppBundle\Entity\TermData $termDatum
+     */
+    public function removeTermDatum(\AppBundle\Entity\TermData $termDatum)
+    {
+        $this->termData->removeElement($termDatum);
+    }
+
+    /**
+     * Get termData
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTermData()
+    {
+        return $this->termData;
+    }
+
+    /**
+     * Add question
+     *
+     * @param \AppBundle\Entity\Question $question
+     *
+     * @return Questionnaire
+     */
+    public function addQuestion(\AppBundle\Entity\Question $question)
+    {
+        $this->question[] = $question;
+
+        return $this;
+    }
+
+    /**
+     * Remove question
+     *
+     * @param \AppBundle\Entity\Question $question
+     */
+    public function removeQuestion(\AppBundle\Entity\Question $question)
+    {
+        $this->question->removeElement($question);
+    }
+
+    /**
+     * Get question
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
+}

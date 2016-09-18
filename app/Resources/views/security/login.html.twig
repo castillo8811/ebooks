@@ -1,0 +1,106 @@
+{# app/Resources/views/base.html.twig #}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Ebooks{% endblock %}</title>
+
+    {% block stylesheets %}
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/materialize.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}"/>
+
+        <!-- end: Css -->
+    {% endblock %}
+    <link rel="shortcut icon" href="{{ asset('img/logomi.png') }}">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<!-- Color red for the Errors -->
+<body>
+<nav class="grey" role="navigation">
+    <div class="nav-wrapper container">
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        <form id="form-search" class="left" action="{{ path('search_index') }}">
+            <div class="input-field">
+                <input id="search" type="search" name="search" required>
+                <label for="search"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
+            </div>
+        </form>
+        <ul class="right hide-on-med-and-down">
+            <li>
+                <a href="{{path('homepage')}}">
+                    <i class="large material-icons left">library_books</i>
+                    Inicio
+                </a>
+            </li>
+            <li>
+                <a href="{{path('search_instructions')}}">
+                    <i class="large material-icons left">live_help</i>
+                    Guía para la lectura de libros
+                </a>
+            </li>
+        </ul>
+
+        <ul id="nav-mobile" class="side-nav">
+            <li><a href="{{ path('homepage') }}">Inicio</a></li>
+            <li><a href="{{ path('search_instructions') }}">Guía para la lectura de libros</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container-wrapper">
+    <div class="container">
+        <div class="section">
+            <form class="form-signin" action="{{  path('security_login') }}" method="post">
+                {% if error %}
+                    <div class="alert alert-danger">
+                        <p>{{ error.messageKey|trans(error.messageData, 'security') }}</p>
+                    </div>
+                {% endif %}
+                <div class="panel periodic-login">
+                    <div class="panel-body text-center">
+                        <p class="element-name">Login</p>
+                        <div class="form-group form-animate-text" style="margin-top:50px !important;">
+                            <input type="text" class="form-text" required  id="username" name="_username" value="{{ last_username }}">
+                            <span class="bar"></span>
+                            <label>Username</label>
+                        </div>
+                        <div class="form-group form-animate-text" style="margin-top:50px !important;">
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
+                            <input type="password" class="form-text" required  id="password" name="_password" />
+                            <span class="bar"></span>
+                            <label>Password</label>
+                        </div>
+                        <br><br>
+                        <input type="submit" class="btn col-md-12" value="Sing in"/>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<footer class="page-footer red">
+    <div class="footer-copyright">
+        <div class="container center-align">
+            México 2016
+        </div>
+    </div>
+</footer>
+
+{% block javascripts %}
+    <!-- start: Javascript -->
+    <script src="{{ asset('js/jquery-2.1.1.min.js') }}"></script>
+    <script src="{{ asset('js/materialize.min.js') }}"></script>
+    <script src="{{ asset('js/init.js') }}"></script>
+
+{% endblock %}
+</body>
+</html>

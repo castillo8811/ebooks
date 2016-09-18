@@ -1,0 +1,5 @@
+{% if vocabularies_visibles %}
+    {% for vocabulary in vocabularies_visibles %}
+        <li><a href="terminos/{{ vocabulary.id }}">{{ vocabulary.name }}</a></li>
+    {% endfor %}
+{% endif %}

@@ -1,0 +1,431 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Information
+ *
+ * @ORM\Table(name="information", indexes={@ORM\Index(name="fk_information_user1_idx", columns={"user_id"})})
+ * @ORM\Entity(repositoryClass="AppBundle\Entity\InformationRepository")
+ */
+class Information
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="first_name", type="string", length=50, nullable=false)
+     *
+     * @Assert\NotBlank(message = "Tu nombre no puede estar en blanco")
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "El nombre debe contener al menos {{ limit }} caracteres de largo",
+     *      maxMessage = "El nombre debe contener un maximo de {{ limit }} caracteres de largo"
+     * )
+     * @Assert\Type("string", message = "El nombre debe ser escrito con caracteres")
+     * @Assert\Regex(
+     *     pattern     = "/^[a-zñáéíóú ]+$/i",
+     *     message = "El nombre debe ser escrito con caracteres y espacios solamente"
+     * )
+     */
+    private $firstName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="last_name", type="string", length=50, nullable=false)
+     *
+     * @Assert\NotBlank(message = "Tu apellido no puede estar en blanco")
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "El apellido debe contener al menos {{ limit }} caracteres de largo",
+     *      maxMessage = "El apellido debe contener un maximo de {{ limit }} caracteres de largo"
+     * )
+     * @Assert\Type("string", message = "El apellido debe ser escrito con caracteres")
+     * @Assert\Regex(
+     *     pattern     = "/^[a-zñáéíóú ]+$/i",
+     *     message = "El apellido debe ser escrito con caracteres y espacios solamente"
+     * )
+     */
+    private $lastName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="mobile_phone", type="string", length=20, nullable=false)
+     *
+     * @Assert\NotBlank(message = "Tu celular no puede estar en blanco")
+     * @Assert\Length(
+     *      min = 7,
+     *      max = 20,
+     *      minMessage = "El celular debe contener al menos {{ limit }} caracteres de largo",
+     *      maxMessage = "El celular debe contener un maximo de {{ limit }} caracteres de largo"
+     * )
+     * @Assert\Type("string", message = "El celular debe ser escrito con caracteres")
+     * @Assert\Regex(
+     *     pattern     = "/^[0-9\(\)\- ]+$/",
+     *     message = "El celular debe ser escrito con numeros, espacios, parentesis y guiones solamente"
+     * )
+     */
+    private $mobilePhone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="phone", type="string", length=20, nullable=true)
+     *
+     * @Assert\Length(
+     *      min = 7,
+     *      max = 20,
+     *      minMessage = "El telefono debe contener al menos {{ limit }} caracteres de largo",
+     *      maxMessage = "El telefono debe contener un maximo de {{ limit }} caracteres de largo"
+     * )
+     * @Assert\Type("string", message = "El telefono debe ser escrito con caracteres")
+     * @Assert\Regex(
+     *     pattern     = "/^[0-9\(\)\- ]+$/",
+     *     message = "El telefono debe ser escrito con numeros, espacios, parentesis y guiones solamente"
+     * )
+     */
+    private $phone;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="level_study", type="string", length=50, nullable=true)
+     *
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "El nivel de estudio debe contener al menos {{ limit }} caracteres de largo",
+     *      maxMessage = "El nivel de estudio debe contener un maximo de {{ limit }} caracteres de largo"
+     * )
+     * @Assert\Type("string", message = "El nivel de estudio debe ser escrito con caracteres")
+     * @Assert\Regex(
+     *     pattern     = "/^[a-zñáéíóú ]+$/i",
+     *     message = "El nivel de estudio debe ser escrito con caracteres y espacios solamente"
+     * )
+     */
+    private $levelStudy;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="living_in", type="string", length=50, nullable=true)
+     *
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "El lugar donde vives debe contener al menos {{ limit }} caracteres de largo",
+     *      maxMessage = "El lugar donde vives debe contener un maximo de {{ limit }} caracteres de largo"
+     * )
+     * @Assert\Type("string", message = "El lugar donde vives debe ser escrito con caracteres")
+     * @Assert\Regex(
+     *     pattern     = "/^[a-zñáéíóú,. ]+$/i",
+     *     message = "El lugar donde vives debe ser escrito con caracteres y espacios solamente"
+     * )
+     */
+    private $livingIn;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="birthdate", type="datetime", nullable=true)
+     *
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 10,
+     *      minMessage = "La fecha de cumpleaños debe contener {{ limit }} caracteres de largo",
+     *      maxMessage = "La fecha de cumpleaños debe contener {{ limit }} caracteres de largo"
+     * )
+     * @Assert\Type("string", message = "La fecha de cumpleaños debe ser escrito con caracteres")
+     * @Assert\Regex(
+     *     pattern     = "/^[0-9\-]+$/",
+     *     message = "La fecha de cumpleaños debe ser escrito con numeros y guiones solamente"
+     * )
+     */
+    private $birthdate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="civil_status", type="string", length=50, nullable=true)
+     *
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "El estado civil debe contener al menos {{ limit }} caracteres de largo",
+     *      maxMessage = "El estado civil debe contener un maximo de {{ limit }} caracteres de largo"
+     * )
+     * @Assert\Type("string", message = "El estado civil debe ser escrito con caracteres")
+     * @Assert\Regex(
+     *     pattern     = "/^[a-zñáéíóú ]+$/i",
+     *     message = "El estado civil debe ser escrito con caracteres y espacios solamente"
+     * )
+     */
+    private $civilStatus;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \AppBundle\Entity\User
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
+
+
+
+    /**
+     * Set firstName
+     *
+     * @param string $firstName
+     *
+     * @return Information
+     */
+    public function setFirstName($firstName)
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    /**
+     * Get firstName
+     *
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * Set lastName
+     *
+     * @param string $lastName
+     *
+     * @return Information
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * Get lastName
+     *
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * Set mobilePhone
+     *
+     * @param string $mobilePhone
+     *
+     * @return Information
+     */
+    public function setMobilePhone($mobilePhone)
+    {
+        $this->mobilePhone = $mobilePhone;
+
+        return $this;
+    }
+
+    /**
+     * Get mobilePhone
+     *
+     * @return string
+     */
+    public function getMobilePhone()
+    {
+        return $this->mobilePhone;
+    }
+
+    /**
+     * Set phone
+     *
+     * @param string $phone
+     *
+     * @return Information
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * Set levelStudy
+     *
+     * @param string $levelStudy
+     *
+     * @return Information
+     */
+    public function setLevelStudy($levelStudy)
+    {
+        $this->levelStudy = $levelStudy;
+
+        return $this;
+    }
+
+    /**
+     * Get levelStudy
+     *
+     * @return string
+     */
+    public function getLevelStudy()
+    {
+        return $this->levelStudy;
+    }
+
+    /**
+     * Set livingIn
+     *
+     * @param string $livingIn
+     *
+     * @return Information
+     */
+    public function setLivingIn($livingIn)
+    {
+        $this->livingIn = $livingIn;
+
+        return $this;
+    }
+
+    /**
+     * Get livingIn
+     *
+     * @return string
+     */
+    public function getLivingIn()
+    {
+        return $this->livingIn;
+    }
+
+    /**
+     * Set birthdate
+     *
+     * @param \DateTime $birthdate
+     *
+     * @return Information
+     */
+    public function setBirthdate($birthdate)
+    {
+        $this->birthdate = $birthdate;
+
+        return $this;
+    }
+
+    /**
+     * Get birthdate
+     *
+     * @return \DateTime
+     */
+    public function getBirthdate()
+    {
+        return $this->birthdate;
+    }
+
+    /**
+     * dateToString
+     *
+     * @param \DateTime $birthdate
+     *
+     * @return String
+     */
+    public function dateToString($birthdate)
+    {
+        $this->birthdate = $birthdate->format('Y-m-d');
+
+        return $this;
+    }
+
+    /**
+     * Set civilStatus
+     *
+     * @param string $civilStatus
+     *
+     * @return Information
+     */
+    public function setCivilStatus($civilStatus)
+    {
+        $this->civilStatus = $civilStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get civilStatus
+     *
+     * @return string
+     */
+    public function getCivilStatus()
+    {
+        return $this->civilStatus;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return Information
+     */
+    public function setUser(\AppBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+}

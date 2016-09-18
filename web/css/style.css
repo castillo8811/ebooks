@@ -1,0 +1,110 @@
+/* Custom Stylesheet */
+/**
+ * Use this file to override Materialize files so you can update
+ * the core Materialize files in the future
+ *
+ * Made By MaterializeCSS.com
+ */
+
+nav{
+   border-bottom: solid #F44336 10px;
+    position: fixed;
+    z-index: 100;
+}
+
+#sidenav-overlay{
+    z-index: 99;
+}
+
+#content{
+    position: relative;
+    top:50px;
+}
+.block{
+    display: block;
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+#form-search{
+    width: 60%;
+}
+
+.page-footer{
+    position:relative;
+    left:0;
+    width: 100%;
+    clear: both;
+    bottom: 0;
+}
+
+.book-item{
+    min-height: 400px !important;
+    padding-top: 10px !important;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.text-bold{
+    font-weight: bolder;
+}
+
+.book-download i{
+    top: 4px;
+    position: relative;
+}
+
+.book-download span{
+    font-size: 1.2rem;
+}
+.download-links{
+    margin-top: 20px;
+}
+.download-item{
+    padding: 10px 5px 10px 5px !important;
+    color: white;
+    font-weight: bolder;
+    margin: 0px 15px 10px 10px;
+}
+.download-item a{
+    color: white;
+}
+
+#i-menus a{
+    font-size: 2rem;
+}
+.instructions h2{
+    font-size: 2.5rem;
+}
+.instructions h3{
+    font-size: 2rem;
+}
+
+.instructions h4{
+    font-size: 1.8rem;
+    color: darkred;
+}
+
+.instructions h5{
+    font-size: 1.5rem;
+}
+
+
+@media only screen and (min-width: 993px){
+    .page-footer{
+        position:absolute;
+    }
+}
+
+@media only screen and (max-width: 990px){
+    .book-item img{
+        width: 80%;
+    }
+}
+
+

@@ -1,0 +1,40 @@
+{# app/Resources/views/reports/create.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Report{% endblock %}
+
+{% block content %}
+    <!--Barra Superior de titulo-->
+    <div class="panel box-shadow-none content-header">
+        <div class="panel-body">
+            <div class="col-md-12">
+                <h3 class="animated fadeInLeft"> Report </h3>
+                <p class="animated fadeInDown">
+                    Home <span class="fa-angle-right fa"></span> Credits
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--Hoja Blanca-->
+    <div class="col-md-12">
+        <div class="panel">
+            <div class="pull-right article-v1-time">
+                <em> Miminium Admin V.1.0</em></div>
+            <div class="panel-body">
+                {{ form_start(form) }}
+                {{ form_widget(form) }}
+                {{ form_end(form) }}
+
+                {{ dump() }}
+            </div>
+        </div>
+    </div>
+    <!-- end: hoja blanca -->
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{# app/Resources/views/tags/result.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+
+
+{% block title %}Resultado{% endblock %}
+
+{%block stylesheets%}
+    {{ parent() }}
+
+    <!-- Our CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/vocabulary.css') }}"/>
+{% endblock %}
+
+{% block content %}
+    <!--Barra Superior de titulo-->
+    <div class="panel box-shadow-none content-header">
+        <div class="panel-body">
+            <div class="col-md-12">
+                <div class="col-xs-7">
+                    <h3 class="animated fadeInLeft">Resultado</h3>
+                    <p class="animated fadeInDown">
+                    Home <span class="fa-angle-right fa"></span> Credits
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Hoja Blanca-->
+    <div class="col-md-12 panel">
+        <div class="col-md-12 panel-heading">
+            <center><h1>No existe Tecnologia Para mostrar.</h1></center>
+
+        </div>
+    </div>
+    <!-- end: hoja blanca -->
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+{% endblock %}
