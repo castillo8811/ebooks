@@ -78,6 +78,11 @@ nav{
 #i-menus a{
     font-size: 2rem;
 }
+
+.instructions{
+    margin-bottom:50px;
+}
+
 .instructions h2{
     font-size: 2.5rem;
 }
