@@ -13,13 +13,15 @@ security:
 
     # http://symfony.com/doc/current/book/security.html#firewalls-authentication
     firewalls:
+        login_firewall:
+            pattern:   ^/login
+            anonymous: ~
         secured_area:
             # this firewall applies to all URLs
-            pattern: ^/downloads/report
+            pattern: ^/downloads/reportsss
 
             # but the firewall does not require login on every page
             # denying access is done in access_control or in your controllers
-            anonymous: true
 
             # This allows the user to login by submitting a username and password
             # Reference: http://symfony.com/doc/current/cookbook/security/form_login_setup.html
