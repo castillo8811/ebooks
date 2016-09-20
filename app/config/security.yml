@@ -13,13 +13,10 @@ security:
 
     # http://symfony.com/doc/current/book/security.html#firewalls-authentication
     firewalls:
-        login_firewall:
-            pattern:   ^/login
-            anonymous: ~
         secured_area:
             # this firewall applies to all URLs
-            pattern: ^/downloads/reportsss
-
+            pattern: ^/
+            anonymous: true
             # but the firewall does not require login on every page
             # denying access is done in access_control or in your controllers
 
@@ -43,4 +40,5 @@ security:
 
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/, roles: ROLE_USER}
+        - { path: ^/downloads/report, roles: ROLE_USER}
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
