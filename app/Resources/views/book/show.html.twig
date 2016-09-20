@@ -7,11 +7,6 @@
                 <div class="icon-block book-info">
                     <a href="{{ path('book_show', { 'isbn': book.isbn }) }}">
                         <img class="z-depth-2 center-block" src="{{ asset('images/covers/' ~book.isbn~ '-front.jpg') }}"/>
-                        {% if book.downloads %}
-                        <div class="grey book-download center-align center-block">
-                            <span class="white-text">Descargas: {{ book.downloads }}</span>
-                        </div>
-                        {%  endif %}
                     </a>
                 </div>
                 <div class="row book-download center-align center-block">
