@@ -12,6 +12,11 @@ nav{
     z-index: 100;
 }
 
+#login-form{
+    width: 50%;
+    margin: 0 auto;
+}
+
 #sidenav-overlay{
     z-index: 99;
 }
@@ -32,7 +37,7 @@ nav{
 }
 
 #form-search{
-    width: 60%;
+    width: 55%;
 }
 
 .page-footer{
@@ -115,6 +120,25 @@ nav{
     .book-item img{
         width: 100%;
     }
+    #form-search{
+        width: 80%;
+        margin: 0 auto;
+    }
 }
 
+.dropdown-content li>a, .dropdown-content li>span{
+    color: darkred;
+}
 
+[type="checkbox"]:checked+label:before{
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+.picker__date-display{
+    background-color: darkred;
+}
+
+.picker__weekday-display{
+    background-color: darkgrey;
+}

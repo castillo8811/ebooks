@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Download;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -83,11 +84,15 @@ class BookController extends Controller
      */
     public function downloadAction($format,Book $book)
     {
-        $downloads=$book->getDownloads();
-        $book->setDownloads($downloads+1);
+        $downloads=new Download();
+        $downloads->setBook($book);
+        $downloads->setFormat($format);
+        $downloads->setDate(time());
+        $downloads->setUser($this->getUser());
+
 
         $em = $this->getDoctrine()->getManager();
-        $em->persist($book);
+        $em->persist($downloads);
         $em->flush();
 
         return $this->redirect("/ebooks/".$format.'/'.$book->getIsbn().'.'.$format);

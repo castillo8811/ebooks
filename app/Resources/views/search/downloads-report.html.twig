@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div id="filter-download">
+        <div class="row">
+            <form class="col s12" method="POST">
+                <div class="input-field col s12 m6">
+                    {{ form_widget(form.book, { 'attr': {'class': 'black-text'} }) }}
+                </div>
+                <div class="input-field col s4 m2">
+                    {{ form_widget(form.start_date, { 'attr': {'class': 'datepicker'} }) }}
+                    {{ form_label(form.start_date, "Fecha Inicial") }}
+                </div>
+                <div class="input-field col s4 m2">
+                    {{ form_widget(form.end_date, { 'attr': {'class': 'datepicker'} }) }}
+                    {{ form_label(form.end_date, "Fecha Final") }}
+                </div>
+                <div class="input-field col s4 m2">
+                    <input type="submit" class="btn red" value="Filtrar"/>
+                </div>
+                {{ form_row(form._token) }}
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        {% for book in books %}
+            <div class="col s12 m3 book-item">
+                <div class="icon-block book-info">
+                    {% if downloads_info[book.id] is defined %}
+                        <h6 class="center black-text">Descargas : {{downloads_info[book.id]['downloads']}}</h6>
+                    {% endif %}
+                    <a class="block " href="{{ path('book_show', { 'isbn': book.isbn }) }}">
+                        <img class="z-depth-1 hoverable center-block" src="{{ asset('images/covers/' ~book.isbn~ '-front.jpg') }}"/>
+                        <h5 class="center black-text">{{book.title}}</h5>
+
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

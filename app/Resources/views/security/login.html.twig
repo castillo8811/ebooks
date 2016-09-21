@@ -57,16 +57,17 @@
 </nav>
 <div class="container-wrapper">
     <div class="container">
-        <div class="section">
+        <div class="row">
+        <div id="login-form">
+            <br><br><br>
             <form class="form-signin" action="{{  path('security_login') }}" method="post">
                 {% if error %}
-                    <div class="alert alert-danger">
+                    <div class="alert alert-danger card-panel red white-text">
                         <p>{{ error.messageKey|trans(error.messageData, 'security') }}</p>
                     </div>
                 {% endif %}
                 <div class="panel periodic-login">
                     <div class="panel-body text-center">
-                        <p class="element-name">Login</p>
                         <div class="form-group form-animate-text" style="margin-top:50px !important;">
                             <input type="text" class="form-text" required  id="username" name="_username" value="{{ last_username }}">
                             <span class="bar"></span>
@@ -79,10 +80,11 @@
                             <label>Password</label>
                         </div>
                         <br><br>
-                        <input type="submit" class="btn col-md-12" value="Sing in"/>
+                        <input type="submit" class="btn col-md-12 grey" value="Ingresar"/>
                     </div>
                 </div>
             </form>
+        </div>
         </div>
     </div>
 </div>
