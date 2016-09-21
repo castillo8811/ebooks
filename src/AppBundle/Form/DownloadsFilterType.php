@@ -22,10 +22,6 @@ class DownloadsFilterType extends AbstractType
                 'class' => 'AppBundle:Book',
                 'choice_label' => 'title',
                 'multiple' => true,
-                'choice_attr' => function($val, $key, $index) {
-                    // adds a class like attending_yes, attending_no, etc
-                    return ['selected' => true];
-                },
                 //'expanded' => true,
             ))
             ->add('start_date')
