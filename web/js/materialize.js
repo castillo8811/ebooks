@@ -3167,7 +3167,7 @@ $(document).ready(function(){
             });
           }
         });
-          options.append($('<li><span class="truncate">X Cerrar</span></li>'));
+          options.append($('<li id="close-combo"><span class="truncate">X Cerrar</span></li>'));
 
       }
 
