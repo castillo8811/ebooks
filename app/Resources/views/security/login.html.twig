@@ -57,7 +57,8 @@
 </nav>
 <div class="container-wrapper">
     <div class="container">
-        <div class="section">
+        <div class="row">
+        <div id="login-form" class="section">
             <form class="form-signin" action="{{  path('security_login') }}" method="post">
                 {% if error %}
                     <div class="alert alert-danger">
@@ -83,6 +84,7 @@
                     </div>
                 </div>
             </form>
+        </div>
         </div>
     </div>
 </div>

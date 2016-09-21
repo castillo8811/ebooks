@@ -12,6 +12,11 @@ nav{
     z-index: 100;
 }
 
+#login-form{
+    width: 50%;
+    margin: 0 auto;
+}
+
 #sidenav-overlay{
     z-index: 99;
 }
