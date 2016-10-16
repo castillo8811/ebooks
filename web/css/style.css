@@ -7,8 +7,7 @@
  */
 
 nav{
-   border-bottom: solid #F44336 10px;
-    position: fixed;
+     position: fixed;
     z-index: 100;
 }
 
