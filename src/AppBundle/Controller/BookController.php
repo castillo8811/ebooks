@@ -27,8 +27,11 @@ class BookController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $books = $em->getRepository('AppBundle:Book')->findAll();
-
+        $repository = $em->getRepository('AppBundle:Book')->findAll();
+        $query = $repository->createQueryBuilder('b');
+        $query->where("b.status =1");
+        $books = $query->getQuery()->getResult();
+        
         return $this->render('book/index.html.twig', array(
             'books' => $books,
         ));
