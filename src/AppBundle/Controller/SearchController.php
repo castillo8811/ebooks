@@ -71,8 +71,8 @@ class SearchController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $book=$form->get("book")->getData();
             $format=$form->get("format")->getData();
-            $start=$form->get("start_date")->getData();
-            $end=$form->get("end_date")->getData();
+            $start=str_replace(',','',$form->get("start_date")->getData());
+            $end=str_replace(',','',$form->get("end_date")->getData());
 
 
             if($book){
