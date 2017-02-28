@@ -3141,6 +3141,7 @@ $(document).ready(function(){
         // Check for multiple type.
         if (type === 'multiple') {
           options.append($('<li class="' + disabledClass + '"><span class="truncate"><input type="checkbox"' + disabledClass + '/><label></label>' + option.html() + '</span></li>'));
+
         } else {
           options.append($('<li class="' + disabledClass + optgroupClass + '"><span class="truncate">' + option.html() + '</span></li>'));
         }
@@ -3153,7 +3154,6 @@ $(document).ready(function(){
             // Direct descendant option.
             if (multiple) {
               appendOptionWithIcon($select, $(this), 'multiple');
-
             } else {
               appendOptionWithIcon($select, $(this));
             }
@@ -3167,6 +3167,8 @@ $(document).ready(function(){
             });
           }
         });
+          options.append($('<li id="close-combo"><span class="truncate">X Cerrar</span></li>'));
+
       }
 
       options.find('li:not(.optgroup)').each(function (i) {

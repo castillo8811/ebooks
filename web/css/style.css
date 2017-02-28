@@ -7,8 +7,7 @@
  */
 
 nav{
-   border-bottom: solid #F44336 10px;
-    position: fixed;
+     position: fixed;
     z-index: 100;
 }
 
@@ -125,6 +124,13 @@ nav{
         margin: 0 auto;
     }
 }
+
+@media only screen and (min-width: 995px) and (max-width : 1400px){
+  #form-search {
+    width: 31%;
+  }
+}
+
 
 .dropdown-content li>a, .dropdown-content li>span{
     color: darkred;
